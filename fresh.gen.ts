@@ -8,6 +8,7 @@ import * as $index from "./routes/index.tsx";
 import * as $button_base from "./islands/button-base.tsx";
 import * as $button_ripple from "./islands/button-ripple.tsx";
 import * as $checkbox from "./islands/checkbox.tsx";
+import * as $icon_check from "./islands/icon-check.tsx";
 import * as $input_text from "./islands/input-text.tsx";
 import * as $input_textarea from "./islands/input-textarea.tsx";
 import * as $select_multi from "./islands/select-multi.tsx";
@@ -24,6 +25,7 @@ const manifest = {
     "./islands/button-base.tsx": $button_base,
     "./islands/button-ripple.tsx": $button_ripple,
     "./islands/checkbox.tsx": $checkbox,
+    "./islands/icon-check.tsx": $icon_check,
     "./islands/input-text.tsx": $input_text,
     "./islands/input-textarea.tsx": $input_textarea,
     "./islands/select-multi.tsx": $select_multi,

@@ -34,6 +34,21 @@ textarea {
     }
 }
 
+.input {
+    display: inline-block;
+    position: relative;
+    &>input {
+        display: block;
+        width: 100%;
+    }
+    &>div {
+        border: 1px solid gray;
+        position: absolute;
+        top: calc(1em + 4px);
+        left: 0;
+        right: 0;
+    }
+}
 .check-box {
     width: fit-content;
     display:inline-flex;

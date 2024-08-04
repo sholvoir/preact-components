@@ -1,9 +1,11 @@
 // deno-lint-ignore-file no-explicit-any
 import { JSX } from "preact/jsx-runtime";
 import { Signal } from "@preact/signals";
+import { Options } from "../lib/options.ts";
+import IconCheck from "./icon-check.tsx";
 
 interface ISlectProps {
-    options: Array<{value: string|number, label: string}>;
+    options: Options;
     binding: Signal<Array<string|number>>;
     disabled?: boolean;
 }
@@ -19,7 +21,7 @@ export default (props: ISlectProps & JSX.HTMLAttributes<HTMLFieldSetElement>) =>
         <legend>{title}</legend>
         {options.map(option =>
             <div title={option.value as any} onClick={handleOptionClick}>
-                <div>{binding.value.includes(option.value) && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>}</div>
+                <div>{binding.value.includes(option.value) && <IconCheck/>}</div>
                 <div>{option.label}</div>
             </div>
         )}
