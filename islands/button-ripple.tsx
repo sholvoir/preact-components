@@ -19,7 +19,7 @@ export default (props: JSX.HTMLAttributes<HTMLButtonElement>) => {
     return <ButtonBase
         {...rest}
         class={`ripple ${className ?? ''}`}
-        onClick={handleClick} >
+        onClick={handleClick}>
             {children}
             {showRipple.value && <span style={rippleStyle.value}/>}
     </ButtonBase>;

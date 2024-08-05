@@ -39,7 +39,6 @@ textarea {
     display: inline-block;
     position: relative;
     >input {
-        display: block;
         width: 100%;
     }
     >div {
