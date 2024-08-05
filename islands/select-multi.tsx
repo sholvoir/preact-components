@@ -17,7 +17,7 @@ export default (props: ISlectProps & JSX.HTMLAttributes<HTMLFieldSetElement>) =>
         if (index > -1) binding.value = [...binding.value.slice(0,index), ...binding.value.slice(index + 1)];
         else binding.value = [...binding.value, value];
     }
-    return <fieldset class={`select ${className ?? ''}`} aria-disabled={disabled} {...rest}>
+    return <fieldset class={`select_6oN7Y ${className ?? ''}`} aria-disabled={disabled} {...rest}>
         <legend>{title}</legend>
         {options.map(option =>
             <div title={option.value as any} onClick={handleOptionClick}>

@@ -14,7 +14,7 @@ export default (props: ISlectProps & JSX.HTMLAttributes<HTMLFieldSetElement>) =>
     const handleOptionClick = (e: Event) => {
         binding.value = (e.currentTarget as HTMLDivElement).title as string|number;
     }
-    return <fieldset class={`select ${className ?? ''}`} aria-disabled={disabled} {...rest}>
+    return <fieldset class={`select_6oN7Y ${className ?? ''}`} aria-disabled={disabled} {...rest}>
         <legend>{title}</legend>
         {options.map(option =>
             <div title={option.value as any} onClick={handleOptionClick}>

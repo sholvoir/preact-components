@@ -16,7 +16,7 @@ export default (props: ICheckboxProps & JSX.HTMLAttributes<HTMLDivElement>) => {
             if (onChange) onChange(e);
         }
     }
-    return <div class={`check-box ${className ?? ''}`} aria-disabled={disabled} onClick={handleClick} {...rest}>
+    return <div class={`check-box_6oN7Y ${className ?? ''}`} aria-disabled={disabled} onClick={handleClick} {...rest}>
         <span>{binding.value?<IconCheck/>:''}</span>{label}
     </div>
 }

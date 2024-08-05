@@ -28,7 +28,7 @@ export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLInputElement>) =
         binding.value = (e.target as HTMLDivElement).textContent ?? '';
         suggestions.value = [];
     }
-    return <div class={`input ${className ?? ''}`} >
+    return <div class={`input_4Xa52 ${className ?? ''}`} >
         <input {...rest} value={binding.value?.toString()} onInput={handleInput}/>
         {suggestions.value.length ? <div>{suggestions.value.map((s: string) => <div onClick={suggestionClicked}>{s}</div>)}</div> : ''}
     </div>;
