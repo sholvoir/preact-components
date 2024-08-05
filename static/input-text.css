@@ -1,17 +1,20 @@
 .input_4Xa52 {
-    display: inline-block;
-    position: relative;
-    &>input {
-        width: 100%;
-    }
+  display: inline-block;
+  position: relative;
+
+  &>input {
+    width: 100%;
+  }
+
+  &>div {
+    border: 1px solid gray;
+    position: absolute;
+    top: calc(1em + 12px);
+    left: 0;
+    right: 0;
+
     &>div {
-        border: 1px solid gray;
-        position: absolute;
-        top: calc(1em + 4px);
-        left: 0;
-        right: 0;
-        &>div {
-            cursor: pointer;
-        }
+      cursor: pointer;
     }
+  }
 }

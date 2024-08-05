@@ -25,7 +25,6 @@ export default function Home() {
     {value: '8', label: "h"}
   ];
   const suggestions = ['abc', 'abd', 'gwetf', 'fsdfa'];
-  const xx = (e: Event) => console.log(n.value, e.type);
   return <>
     <BButton>ButtonAntiShake</BButton><br/>
     <BButton disabled>ButtonAntiShake</BButton><br/>
@@ -36,6 +35,6 @@ export default function Home() {
     <InputTextArea binding={txt}/><br/>
     <SSelect binding={sslec} options={options} title="Single Select"/>
     <MSelect binding={mslec} options={options} title="Multi Select"/>
-    <InputText binding={n} options={suggestions} onChange={xx}/><br/>
+    <InputText binding={n} options={suggestions} style="border: 1px solid red"/><br/>
   </>;
 }

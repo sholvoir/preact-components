@@ -1,23 +1,25 @@
 @keyframes ripple {
-    from {
-        transform: scale(0);
-        opacity: 1;
-    }
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 .ripple_5fybI {
-    min-width: min-content;
-    overflow: hidden;
-    position: relative;
-    &>span {
-        position: absolute;
-        transform: scale(0);
-        border-radius: 50%;
-        background-color: #FFFA;
-        animation: ripple 600ms linear 0s;
-    }
+  min-width: min-content;
+  overflow: hidden;
+  position: relative;
+
+  &>span {
+    position: absolute;
+    transform: scale(0);
+    border-radius: 50%;
+    background-color: #FFFA;
+    animation: ripple 600ms linear 0s;
+  }
 }
