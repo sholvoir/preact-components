@@ -7,8 +7,8 @@ interface ITextInputProps {
     maxSuggest?: number;
     options?: Array<string>;
 }
-export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLDivElement>) => {
-    const { binding, type, num, options, maxSuggest, ...rest} = props;
+export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLInputElement>) => {
+    const { binding, num, options, maxSuggest, class: className, ...rest} = props;
     const max = maxSuggest ?? 12;
     const suggestions = useSignal<Array<string>>([]);
     const handleInput = (e: Event) => {
@@ -28,8 +28,8 @@ export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLDivElement>) => 
         binding.value = (e.target as HTMLDivElement).textContent ?? '';
         suggestions.value = [];
     }
-    return <div class="input" {...rest}>
-        <input type={type ?? 'text'} value={binding.value?.toString()} onInput={handleInput}/>
-        {suggestions.value.length ? <div>{suggestions.value.map(s => <div onClick={suggestionClicked}>{s}</div>)}</div> : ''}
+    return <div class={`input ${className ?? ''}`} >
+        <input {...rest} value={binding.value?.toString()} onInput={handleInput}/>
+        {suggestions.value.length ? <div>{suggestions.value.map((s: string) => <div onClick={suggestionClicked}>{s}</div>)}</div> : ''}
     </div>;
 }

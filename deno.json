@@ -1,4 +1,6 @@
 {
+  "name": "@sholvoir/components",
+  "version": "0.0.1",
   "lock": false,
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
@@ -25,11 +27,28 @@
     "preact": "npm:preact@10.23.1",
     "preact/jsx-runtime": "npm:preact@10.23.1/jsx-runtime",
     "preact/hooks": "npm:preact@10.23.1/hooks",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.3.0",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.8.0"
+    "@preact/signals": "npm:@preact/signals@1.3.0",
+    "@preact/signals-core": "npm:@preact/signals-core@1.8.0"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
+  },
+  "publish": {
+    "include": [
+      "islands/**/*.tsx",
+      "lib/**/*.ts"
+    ]
+  },
+  "exports": {
+    "./button-base": "./islands/button-base.tsx",
+    "./button-ripple": "./islands/button-ripple.tsx",
+    "./checkbox": "./islands/checkbox.tsx",
+    "./icon-check": "./islands/icon-check.tsx",
+    "./input-text": "./islands/input-text.tsx",
+    "./input-textarea": "./islands/input-textarea.tsx",
+    "./select-multi": "./islands/select-multi.tsx",
+    "./select-single": "./islands/select-single.tsx",
+    "./options": "./lib/options.ts"
   }
 }

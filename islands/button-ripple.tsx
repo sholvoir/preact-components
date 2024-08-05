@@ -1,6 +1,6 @@
 import { JSX } from "preact";
 import { useSignal } from "@preact/signals";
-import AntiShakeButton from './button-base.tsx';
+import ButtonBase from './button-base.tsx';
 
 export default (props: JSX.HTMLAttributes<HTMLButtonElement>) => {
     const { class: className, children, onClick, ...rest} = props;
@@ -13,14 +13,14 @@ export default (props: JSX.HTMLAttributes<HTMLButtonElement>) => {
         rippleStyle.value = `width: ${diameter}px; height: ${diameter}px; left: ${
             e.offsetX - radius}px; top: ${e.offsetY - radius}px`;
         showRipple.value = true;
-        setTimeout(()=>showRipple.value = false, 610);
+        setTimeout(() => showRipple.value = false, 610);
         if (onClick) onClick(e);
     }
-    return <AntiShakeButton
+    return <ButtonBase
         {...rest}
         class={`ripple ${className ?? ''}`}
         onClick={handleClick} >
             {children}
             {showRipple.value && <span style={rippleStyle.value}/>}
-    </AntiShakeButton>;
+    </ButtonBase>;
 }

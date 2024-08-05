@@ -6,6 +6,7 @@
     opacity: 50%;
 }
 
+input,
 textarea {
     outline: none;
 }
@@ -37,30 +38,33 @@ textarea {
 .input {
     display: inline-block;
     position: relative;
-    &>input {
+    >input {
         display: block;
         width: 100%;
     }
-    &>div {
+    >div {
         border: 1px solid gray;
         position: absolute;
         top: calc(1em + 4px);
         left: 0;
         right: 0;
+        >div {
+            cursor: pointer;
+        }
     }
 }
 .check-box {
     width: fit-content;
-    display:inline-flex;
-    gap: 0.3em;
+    display: inline-block;
     align-items: center;
-    &
-    div:nth-child(1) {
+    >span:nth-child(1) {
+        display: inline-block;
         width: 1em;
         height: 1em;
         border: 2px solid gray;
         border-radius: 4px;
-        svg {
+        margin-right: 0.3em;
+        >svg {
             fill: currentColor;
             width: 100%;
             height: 100%;
@@ -76,13 +80,12 @@ textarea {
     flex-direction: column;
     gap: 2px;
     scrollbar-color: gray transparent;
-    scrollbar-width: thin;
-    div {
+    >div {
         display: flex;
         gap: 4px;
         cursor: pointer;
         align-items: center;
-        div:nth-child(1) {
+        >div:nth-child(1) {
             width: 1em;
             height: 1em;
             svg {
