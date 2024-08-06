@@ -6,7 +6,7 @@ interface ITextInputProps {
     num?: boolean;
     maxSuggest?: number;
     options?: Array<string>;
-    onChange: () => void;
+    onChange?: () => void;
 }
 export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLInputElement>) => {
     const { binding, num, options, maxSuggest, class: className, onChange, ...rest} = props;
