@@ -9,10 +9,12 @@
   &>div {
     border: 1px solid gray;
     position: absolute;
+    z-index: 100;
+    background-color: lightgray;
     top: calc(1em + 12px);
     left: 0;
     right: 0;
-
+    padding-inline: 6px;
     &>div {
       cursor: pointer;
     }

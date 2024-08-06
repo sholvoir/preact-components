@@ -6,11 +6,13 @@ interface ITextInputProps {
     num?: boolean;
     maxSuggest?: number;
     options?: Array<string>;
+    onChange: () => void;
 }
 export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLInputElement>) => {
-    const { binding, num, options, maxSuggest, class: className, ...rest} = props;
+    const { binding, num, options, maxSuggest, class: className, onChange, ...rest} = props;
     const max = maxSuggest ?? 12;
     const suggestions = useSignal<Array<string>>([]);
+    const handleBlur = () => setTimeout(() => suggestions.value = [], 200);
     const handleInput = (e: Event) => {
         const text = (e.target as HTMLInputElement).value;
         binding.value = num ? +text : text;
@@ -26,10 +28,10 @@ export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLInputElement>) =
     };
     const suggestionClicked = (e: Event) => {
         binding.value = (e.target as HTMLDivElement).textContent ?? '';
-        suggestions.value = [];
+        if (onChange) onChange();
     }
     return <div class={`input_4Xa52 ${className ?? ''}`} >
-        <input {...rest} value={binding.value?.toString()} onInput={handleInput}/>
+        <input {...rest} value={binding.value?.toString()} onInput={handleInput} onBlur={handleBlur}/>
         {suggestions.value.length ? <div>{suggestions.value.map((s: string) => <div onClick={suggestionClicked}>{s}</div>)}</div> : ''}
     </div>;
 }
