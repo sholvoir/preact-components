@@ -16,14 +16,18 @@ export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLInputElement>) =
     const handleInput = (e: Event) => {
         const text = (e.target as HTMLInputElement).value;
         binding.value = num ? +text : text;
-        const content = binding.value.toString();
-        if (options && content) {
-            const suggests: Array<string> = [];
-            for (const option of options) if (option.includes(content)) {
-                suggests.push(option);
-                if (suggests.length >= max) break;
-            }
-            suggestions.value = suggests;
+        if (options) {
+            const content = binding.value.toString();
+            if (content) {
+                const first: Array<string> = [];
+                const second: Array<string> = [];
+                for (const option of options) {
+                    if (option.startsWith(content)) first.push(option);
+                    else if (option.includes(content)) second.push(option);
+                    if (first.length >= max) break;
+                }
+                suggestions.value = first.concat(second.slice(0, max - first.length));
+            } else suggestions.value = [];
         }
     };
     const suggestionClicked = (e: Event) => {
