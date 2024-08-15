@@ -9,6 +9,6 @@ export default (props: JSX.HTMLAttributes<HTMLButtonElement>) => {
         if (onClick) await onClick(e);
         enabled.value = true;
     };
-    return <button {...rest} type="button"
+    return <button type="button" {...rest}
         onClick={handleClick} disabled={!enabled.value || disabled}>{children}</button>
 ;}

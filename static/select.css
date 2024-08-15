@@ -1,12 +1,4 @@
 .select_6oN7Y {
-  overflow-y: auto;
-  border: 1px solid gray;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  scrollbar-color: gray transparent;
-
   &>div {
     display: flex;
     gap: 4px;
