@@ -14,7 +14,7 @@ import * as $input_text from "./islands/input-text.tsx";
 import * as $input_textarea from "./islands/input-textarea.tsx";
 import * as $select_multi from "./islands/select-multi.tsx";
 import * as $select_single from "./islands/select-single.tsx";
-import { type Manifest } from "$fresh/server.ts";
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
