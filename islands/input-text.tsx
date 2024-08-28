@@ -13,7 +13,7 @@ export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLInputElement>) =
     const max = maxSuggest ?? 12;
     const suggestions = useSignal<Array<string>>([]);
     const handleBlur = () => setTimeout(() => suggestions.value = [], 200);
-    const handleKeyPress = (e: KeyboardEvent) => e.key == 'Enter' && onChange && onChange();
+    const handleKeyPress = (e: KeyboardEvent) => e.key == 'Enter' && handleBlur() && onChange && onChange();
     const handleInput = (e: InputEvent) => {
         const text = (e.target as HTMLInputElement).value;
         binding.value = num ? +text : text;
