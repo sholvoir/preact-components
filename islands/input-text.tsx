@@ -8,7 +8,7 @@ interface ITextInputProps {
     options?: Array<string>;
     onChange?: () => void;
 }
-export default (props: ITextInputProps & JSX.HTMLAttributes<HTMLInputElement>) => {
+export default (props: ITextInputProps & JSX.InputHTMLAttributes<HTMLInputElement>) => {
     const { binding, num, options, maxSuggest, class: className, onChange, ...rest} = props;
     const max = maxSuggest ?? 12;
     const suggestions = useSignal<Array<string>>([]);

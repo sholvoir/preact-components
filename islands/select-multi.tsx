@@ -9,7 +9,7 @@ interface ISlectProps {
     binding: Signal<Array<string|number>>;
     disabled?: boolean;
 }
-export default (props: ISlectProps & JSX.HTMLAttributes<HTMLFieldSetElement>) => {
+export default (props: ISlectProps & JSX.FieldsetHTMLAttributes<HTMLFieldSetElement>) => {
     const {options, binding, title, disabled, class: className, ...rest} = props;
     const handleOptionClick = (e: Event) => {
         const value = (e.currentTarget as HTMLDivElement).title as string|number;

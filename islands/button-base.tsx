@@ -1,7 +1,7 @@
 import { JSX } from "preact";
 import { useSignal } from "@preact/signals";
 
-export default (props: JSX.HTMLAttributes<HTMLButtonElement>) => {
+export default (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => {
     const { children, disabled, onClick, ...rest} = props;
     const enabled = useSignal(true);
     const handleClick = async (e: JSX.TargetedMouseEvent<HTMLButtonElement>) => {
