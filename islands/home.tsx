@@ -1,14 +1,17 @@
+import { VNode } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useSignal } from "@preact/signals";
-import BButton from '../islands/button-base.tsx';
-import RButton from '../islands/button-ripple.tsx';
-import Checkbox from '../islands/checkbox.tsx';
-import InputText from '../islands/input-text.tsx';
-import InputTextArea from '../islands/input-textarea.tsx';
-import SSelect from '../islands/select-single.tsx';
-import MSelect from '../islands/select-multi.tsx';
+import { countryCodes } from "../lib/country-code.ts";
+import BButton from './button-base.tsx';
+import RButton from './button-ripple.tsx';
+import Checkbox from './checkbox.tsx';
+import InputText from './input-text.tsx';
+import InputTextArea from './input-textarea.tsx';
+import SSelect from './select-single.tsx';
+import MSelect from './select-multi.tsx';
+import DropDown from './dropdown.tsx';
 
-export default () => {
+export default (): VNode<HTMLDivElement> => {
     if (!IS_BROWSER) return <div/>;
     const checkbox1 = useSignal(false);
     const checkbox2 = useSignal(true);
@@ -16,6 +19,7 @@ export default () => {
     const txt = useSignal('Tfhsak');
     const sslec = useSignal('1');
     const mslec = useSignal(['3', '5']);
+    const code = useSignal(1);
     const options = [
         { value: '1', label: "a" },
         { value: '2', label: "b" },
@@ -39,5 +43,6 @@ export default () => {
         <InputTextArea binding={txt} /><br />
         <SSelect binding={sslec} options={options} title="Single Select" />
         <MSelect binding={mslec} options={options} title="Multi Select" />
+        <DropDown binding={code} options={countryCodes} title="Unied States"/>
     </div>;
 }

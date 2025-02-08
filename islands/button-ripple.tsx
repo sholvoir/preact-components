@@ -1,8 +1,8 @@
-import { JSX } from "preact";
+import { JSX, VNode } from "preact";
 import { useSignal } from "@preact/signals";
 import ButtonBase from './button-base.tsx';
 
-export default (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => {
+export default (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>): VNode<HTMLButtonElement> => {
     const { class: className, children, onClick, ...rest} = props;
     const showRipple = useSignal(false);
     const rippleStyle = useSignal('');

@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
-import { JSX } from "preact/jsx-runtime";
+import { JSX, VNode } from "preact";
 import { Signal } from "@preact/signals";
 import { Options } from "../lib/options.ts";
 import IconCheck from "./icon-check.tsx";
@@ -9,7 +9,7 @@ interface ISlectProps {
     binding: Signal<Array<string|number>>;
     disabled?: boolean;
 }
-export default (props: ISlectProps & JSX.FieldsetHTMLAttributes<HTMLFieldSetElement>) => {
+export default (props: ISlectProps & JSX.FieldsetHTMLAttributes<HTMLFieldSetElement>): VNode<HTMLFieldSetElement> => {
     const {options, binding, title, disabled, class: className, ...rest} = props;
     const handleOptionClick = (e: Event) => {
         const value = (e.currentTarget as HTMLDivElement).title as string|number;

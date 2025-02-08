@@ -1,4 +1,4 @@
-import { JSX } from "preact";
+import { JSX, VNode } from "preact";
 import { Signal, useSignal } from "@preact/signals";
 
 interface ITextInputProps {
@@ -8,7 +8,7 @@ interface ITextInputProps {
     options?: Array<string>;
     onChange?: () => void;
 }
-export default (props: ITextInputProps & JSX.InputHTMLAttributes<HTMLInputElement>) => {
+export default (props: ITextInputProps & JSX.InputHTMLAttributes<HTMLInputElement>): VNode<HTMLDivElement> => {
     const { binding, num, options, maxSuggest, class: className, onChange, ...rest} = props;
     const max = maxSuggest ?? 12;
     const suggestions = useSignal<Array<string>>([]);

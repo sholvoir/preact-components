@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
-import { JSX } from "preact";
+import { JSX, VNode } from "preact";
 import { Signal } from "@preact/signals";
 import IconCheck from "./icon-check.tsx";
 
@@ -8,7 +8,7 @@ interface ICheckboxProps {
     label?: string;
     disabled?: boolean;
 }
-export default (props: ICheckboxProps & JSX.HTMLAttributes<HTMLDivElement>) => {
+export default (props: ICheckboxProps & JSX.HTMLAttributes<HTMLDivElement>): VNode<HTMLDivElement> => {
     const { label, binding, disabled, class: className, onChange, ...rest} = props;
     const handleClick = (e: any) => {
         if (!disabled) {
