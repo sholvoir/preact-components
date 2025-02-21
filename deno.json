@@ -1,53 +1,39 @@
 {
-  "name": "@sholvoir/components",
-  "version": "0.0.9",
-  "lock": false,
-  "tasks": {
-    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
-    "manifest": "deno task cli manifest $(pwd)",
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "build": "deno run -A dev.ts build",
-    "preview": "deno run -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
-  },
-  "lint": {
-    "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
+   "name": "@sholvoir/components",
+   "version": "0.1.0",
+   "lock": false,
+   "tasks": {
+      "build": "deno -A main.ts build",
+      "release": "deno -A main.ts release",
+      "start": "deno -A main.ts start"
+   },
+   "lint": { "rules": { "tags": ["recommended"] } },
+   "imports": {
+      "@preact/signals": "npm:@preact/signals@^2.0.1",
+      "@std/fs": "jsr:@std/fs@^1.0.13",
+      "esbuild": "npm:esbuild@^0.25.0",
+      "esbuild-deno-loader": "jsr:@luca/esbuild-deno-loader@^0.11.1",
+      "preact": "npm:preact@^10.25.4"
+   },
+   "compilerOptions": {
+      "jsx": "react-jsx",
+      "jsxImportSource": "preact"
+   },
+   "publish": {
+      "include": [
+         "src/**/*.tsx",
+         "lib/**/*.ts"
       ]
-    }
-  },
-  "exclude": [
-    "**/_fresh/*"
-  ],
-  "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.7.3/",
-    "preact": "npm:preact@10.25.4",
-    "preact/jsx-runtime": "npm:preact@10.25.4/jsx-runtime",
-    "preact/hooks": "npm:preact@10.25.4/hooks",
-    "@preact/signals": "npm:@preact/signals@2.0.0"
-  },
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  },
-  "publish": {
-    "include": [
-      "islands/**/*.tsx",
-      "lib/**/*.ts"
-    ]
-  },
-  "exports": {
-    "./button-base": "./islands/button-base.tsx",
-    "./button-ripple": "./islands/button-ripple.tsx",
-    "./checkbox": "./islands/checkbox.tsx",
-    "./icon-check": "./islands/icon-check.tsx",
-    "./input-text": "./islands/input-text.tsx",
-    "./input-textarea": "./islands/input-textarea.tsx",
-    "./select-multi": "./islands/select-multi.tsx",
-    "./select-single": "./islands/select-single.tsx",
-    "./options": "./lib/options.ts"
-  }
+   },
+   "exports": {
+      "./button-base": "./src/button-base.tsx",
+      "./button-ripple": "./src/button-ripple.tsx",
+      "./checkbox": "./src/checkbox.tsx",
+      "./icon-check": "./src/icon-check.tsx",
+      "./input-text": "./src/input-text.tsx",
+      "./input-textarea": "./src/input-textarea.tsx",
+      "./select-multi": "./src/select-multi.tsx",
+      "./select-single": "./src/select-single.tsx",
+      "./options": "./lib/options.ts"
+   }
 }
