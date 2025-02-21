@@ -1,5 +1,4 @@
 import { VNode } from "preact";
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useSignal } from "@preact/signals";
 import { countryCodes } from "../lib/country-code.ts";
 import BButton from './button-base.tsx';
@@ -12,7 +11,6 @@ import MSelect from './select-multi.tsx';
 import DropDown from './dropdown.tsx';
 
 export default (): VNode<HTMLDivElement> => {
-    if (!IS_BROWSER) return <div/>;
     const checkbox1 = useSignal(false);
     const checkbox2 = useSignal(true);
     const n = useSignal('');
