@@ -1,6 +1,6 @@
 {
    "name": "@sholvoir/components",
-   "version": "0.1.0",
+   "version": "0.1.1",
    "lock": false,
    "tasks": {
       "build": "deno -A main.ts build",
@@ -9,6 +9,7 @@
    },
    "lint": { "rules": { "tags": ["recommended"] } },
    "imports": {
+      "@iconify/tailwind4": "npm:@iconify/tailwind4@^1.0.3",
       "@preact/signals": "npm:@preact/signals@^2.0.1",
       "@std/fs": "jsr:@std/fs@^1.0.13",
       "esbuild": "npm:esbuild@^0.25.0",
@@ -21,20 +22,23 @@
       "jsxImportSource": "preact"
    },
    "exports": {
-      "./button-base": "./src/button-base.tsx",
-      "./button-ripple": "./src/button-ripple.tsx",
-      "./checkbox": "./src/checkbox.tsx",
-      "./dropdown": "./src/dropdown.tsx",
-      "./icon-check": "./src/icon-check.tsx",
-      "./icon-chevron-down": "./src/icon-chevron-down.tsx",
-      "./icon-chevron-left": "./src/icon-chevron-left.tsx",
-      "./icon-refresh": "./src/icon-refresh.tsx",
-      "./input-text": "./src/input-text.tsx",
-      "./input-textarea": "./src/input-textarea.tsx",
-      "./list": "./src/list.tsx",
-      "./select-multi": "./src/select-multi.tsx",
-      "./select-single": "./src/select-single.tsx",
-      "./tab": "./src/tab.tsx",
-      "./options": "./lib/options.ts"
+      "./src/button-base": "./src/button-base.tsx",
+      "./src/button-ripple": "./src/button-ripple.tsx",
+      "./src/checkbox": "./src/checkbox.tsx",
+      "./src/dropdown": "./src/dropdown.tsx",
+      "./src/icon-check": "./src/icon-check.tsx",
+      "./src/icon-chevron-down": "./src/icon-chevron-down.tsx",
+      "./src/icon-chevron-left": "./src/icon-chevron-left.tsx",
+      "./src/icon-refresh": "./src/icon-refresh.tsx",
+      "./src/input-text": "./src/input-text.tsx",
+      "./src/input-textarea": "./src/input-textarea.tsx",
+      "./src/list": "./src/list.tsx",
+      "./src/select-multi": "./src/select-multi.tsx",
+      "./src/select-single": "./src/select-single.tsx",
+      "./src/tab": "./src/tab.tsx",
+      "./lib/animation-ripple": "./lib/animation-ripple.ts",
+      "./lib/country-code": "./lib/country-code.ts",
+      "./lib/options": "./lib/options.ts",
+      "./lib/tailwind-preflight": "./lib/tailwind-preflight.ts"
    }
 }

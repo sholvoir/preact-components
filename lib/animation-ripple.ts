@@ -1,3 +1,4 @@
+export const rippleKeyframe: string = `
 @keyframes ripple {
   from {
     transform: scale(0);
@@ -8,3 +9,4 @@
     opacity: 0;
   }
 }
+`

@@ -1,5 +1,13 @@
-import { defineConfig, presetWind3, presetAttributify, presetIcons } from 'unocss';
+import { defineConfig, presetWind3, presetIcons } from 'unocss';
+import tailwindPreflight from "./lib/tailwind-preflight.ts";
+import { rippleKeyframe } from "./lib/animation-ripple.ts";
 
+const rawCSS = `
+:root, :host {
+    --ripple: var(--color-gray-200)
+}
+`
 export default defineConfig({
-    presets: [presetAttributify(), presetIcons(), presetWind3()]
+    preflights: [{ getCSS: () => `${tailwindPreflight}${rawCSS}${rippleKeyframe}` }],
+    presets: [presetIcons(), presetWind3({ dark: 'media' })]
 })

@@ -14,7 +14,7 @@ const tail = new Deno.Command('tailwindcss', {
     args: ['-i', './styles.css', '-o', `${outdir}/styles.css`], stdout: 'inherit', stderr: 'inherit'
 });
 const uno = new Deno.Command(Deno.execPath(), {
-    args: ['-A', 'npm:@unocss/cli', 'src/**/*', '-o', 'dest/styles.css'], stdout: 'inherit', stderr: 'inherit'
+    args: ['-A', 'npm:@unocss/cli', 'dest/index.js', '-o', 'dest/styles.css'], stdout: 'inherit', stderr: 'inherit'
 })
 const serve = new Deno.Command(Deno.execPath(), {
     args: ['-A', 'jsr:@std/http/file-server', `${outdir}/`], stdout: 'inherit', stderr: 'inherit'
@@ -34,24 +34,15 @@ const esb = async (release = false) => {
         sourcemap: !release,
         minify: release
     });
-    esbuild.stop();
+    await esbuild.stop();
 };
 
 if (import.meta.main) {
-    switch (Deno.args[0]) {
-        case 'static': {
-            await copy('static', outdir, { overwrite: true });
-            break;
-        }
-        case 'uno': {
-            await uno.output();
-            break;
-        }
-        case 'build': {
-            await esb();
-            await tail.output();
-            break;
-        }
+    for (const arg of Deno.args) switch (arg) {
+        case 'static': { await copy('static', outdir, { overwrite: true }); break; }
+        case 'esb': { await esb(); break; }
+        case 'uno': { await uno.output(); break; }
+        case 'build': { await esb(); await tail.output(); break; }
         case 'release': {
             await emptyDir(outdir)
             await copy('static', outdir, { overwrite: true });
@@ -59,9 +50,7 @@ if (import.meta.main) {
             await tail.output();
             break;
         }
-        case 'start': {
-            await serve.output();
-        }
+        case 'start': { await serve.output(); break; }
+        default: { console.log('Not a Command!!!'); }
     }
-
 }

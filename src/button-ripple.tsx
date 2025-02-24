@@ -17,7 +17,7 @@ export default (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>): VNode<HTMLB
             top: `${e.offsetY - radius}px`,
         }
         showRipple.value = true;
-        setTimeout(() => showRipple.value = false, 610);
+        setTimeout(() => showRipple.value = false, 580);
         if (onClick) onClick(e);
     }
     return <ButtonBase
@@ -25,6 +25,6 @@ export default (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>): VNode<HTMLB
         class={`overflow-hidden relative rounded-md ${className ?? ''}`}
         onClick={handleClick}>
             {children}
-            {showRipple.value && <span class="absolute transform-[scale(0)] rounded-[50%] bg-(--ripple,gray)/80 animate-[ripple_600ms_linear_0s]" style={rippleStyle.value}/>}
+            {showRipple.value && <span class="absolute transform-[scale(0)] rounded-[50%] bg-[var(--ripple,gray)]:80 animate-[ripple_600ms_linear_0s]" style={rippleStyle.value}/>}
     </ButtonBase>;
 }
