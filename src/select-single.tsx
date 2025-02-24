@@ -1,7 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import { JSX, VNode } from "preact";
 import { ISingleSlectProps } from "../lib/options.ts";
-import IconCheck from "./icon-check.tsx";
 
 export default (props: ISingleSlectProps & JSX.FieldsetHTMLAttributes<HTMLFieldSetElement>): VNode<HTMLFieldSetElement> => {
     const {options, binding, title, disabled, class: className, ...rest} = props;
@@ -12,8 +11,8 @@ export default (props: ISingleSlectProps & JSX.FieldsetHTMLAttributes<HTMLFieldS
         <legend>{title}</legend>
         {options.map((option, i) =>
             <div class="flex gap-1 cursor-pointer items-center" key={i} title={option.value as any} onClick={handleOptionClick}>
-                <div class="w-4 h-4">{option.value == binding.value && <IconCheck class="w-full h-full"/>}</div>
-                <div>{option.label}</div>
+                <span class={option.value==binding.value?"i-material-symbols-check-box-outline":"i-material-symbols-check-box-outline-blank"}/>
+                <span>{option.label}</span>
             </div>
         )}
     </fieldset>

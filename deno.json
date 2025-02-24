@@ -1,6 +1,6 @@
 {
    "name": "@sholvoir/components",
-   "version": "0.1.1",
+   "version": "0.1.2",
    "lock": false,
    "tasks": {
       "build": "deno -A main.ts build",
@@ -9,6 +9,7 @@
    },
    "lint": { "rules": { "tags": ["recommended"] } },
    "imports": {
+      "@iconify-json/material-symbols": "npm:@iconify-json/material-symbols@^1.2.14",
       "@iconify/tailwind4": "npm:@iconify/tailwind4@^1.0.3",
       "@preact/signals": "npm:@preact/signals@^2.0.1",
       "@std/fs": "jsr:@std/fs@^1.0.13",
@@ -26,10 +27,6 @@
       "./src/button-ripple": "./src/button-ripple.tsx",
       "./src/checkbox": "./src/checkbox.tsx",
       "./src/dropdown": "./src/dropdown.tsx",
-      "./src/icon-check": "./src/icon-check.tsx",
-      "./src/icon-chevron-down": "./src/icon-chevron-down.tsx",
-      "./src/icon-chevron-left": "./src/icon-chevron-left.tsx",
-      "./src/icon-refresh": "./src/icon-refresh.tsx",
       "./src/input-text": "./src/input-text.tsx",
       "./src/input-textarea": "./src/input-textarea.tsx",
       "./src/list": "./src/list.tsx",

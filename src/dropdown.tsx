@@ -3,7 +3,6 @@ import { JSX, VNode } from "preact";
 import { useSignal } from "@preact/signals";
 import { ISingleSlectProps } from "../lib/options.ts";
 import ButtonBase from './button-base.tsx';
-import ChevronDown from './icon-chevron-down.tsx';
 
 export default (props: ISingleSlectProps & JSX.HTMLAttributes<HTMLDivElement>): VNode<HTMLDivElement> => {
     const { class: className, binding, options, title, ...rest} = props;
@@ -21,7 +20,7 @@ export default (props: ISingleSlectProps & JSX.HTMLAttributes<HTMLDivElement>): 
     return <div class={`relative ${className??''}`} {...rest}>
         <ButtonBase class="flex gap-2 justify-between w-full" onClick={handleClick}>
             <span>{content}</span>
-            <ChevronDown class="inline-block w-5 h-5 ml-1 align-middle"/>
+            <span class="i-mdi-chevron-down"/>
         </ButtonBase>
         {isOpen.value && <div class="max-h-64 absolute top-[105%] inset-x-0 overflow-y-auto">
             {options.map((option, i) => <div key={i} title={option.value as any} onClick={handleOptionClick}>{option.label}</div>)}

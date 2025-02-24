@@ -34,6 +34,8 @@ export default (props: ITextInputProps & JSX.InputHTMLAttributes<HTMLInputElemen
     }
     return <div class={`inline-block relative border rounded ${className ?? ''}`} >
         <input class="w-full outline-none px-2" {...rest} value={binding.value?.toString()} onInput={handleInput} onBlur={handleBlur} onKeyUp={handleKeyPress}/>
-        {suggestions.value.length ? <div class="absolute border border-solid z-100 top-[105%] inset-x-0">{suggestions.value.map((s, i) => <div key={i} onClick={suggestionClicked}>{s}</div>)}</div> : ''}
+        {suggestions.value.length ? <div class="absolute border border-solid z-100 top-[105%] inset-x-0">
+            {suggestions.value.map((s: string, i: number) => <div key={i} onClick={suggestionClicked}>{s}</div>)}
+        </div> : ''}
     </div>;
 }

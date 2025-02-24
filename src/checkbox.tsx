@@ -1,7 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import { JSX, VNode } from "preact";
 import { Signal } from "@preact/signals";
-import IconCheck from "./icon-check.tsx";
 
 interface ICheckboxProps {
     binding: Signal<boolean>;
@@ -17,7 +16,7 @@ export default (props: ICheckboxProps & JSX.HTMLAttributes<HTMLDivElement>): VNo
         }
     }
     return <div class={`check-box_6oN7Y ${disabled?'opacity-50':''} ${className ?? ''}`} aria-disabled={disabled} onClick={handleClick} {...rest}>
-        <span class="inline-block w-4 h-4 border rounded mr-1 ">{binding.value&&<IconCheck class="w-full h-full align-top"/>}</span>
+        <span class={binding.value?"i-material-symbols-check-box-outline":"i-material-symbols-check-box-outline-blank"}/>
         {label}
     </div>
 }
