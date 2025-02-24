@@ -1,7 +1,4 @@
 {
 	"deno.enable": true,
-	"deno.lint": true,
-	"css.customData": [
-		".vscode/tailwind.json"
-	]
+	"deno.lint": true
 }

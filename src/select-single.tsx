@@ -8,11 +8,11 @@ export default (props: ISingleSlectProps & JSX.FieldsetHTMLAttributes<HTMLFieldS
     const handleOptionClick = (e: Event) => {
         binding.value = (e.currentTarget as HTMLDivElement).title as string|number;
     }
-    return <fieldset class={`select_6oN7Y ${className ?? ''}`} aria-disabled={disabled} {...rest}>
+    return <fieldset class={`border rounded px-2 ${className ?? ''}`} aria-disabled={disabled} {...rest}>
         <legend>{title}</legend>
-        {options.map(option =>
-            <div title={option.value as any} onClick={handleOptionClick}>
-                <div>{option.value == binding.value && <IconCheck/>}</div>
+        {options.map((option, i) =>
+            <div class="flex gap-1 cursor-pointer items-center" key={i} title={option.value as any} onClick={handleOptionClick}>
+                <div class="w-4 h-4">{option.value == binding.value && <IconCheck class="w-full h-full"/>}</div>
                 <div>{option.label}</div>
             </div>
         )}

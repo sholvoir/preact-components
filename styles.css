@@ -1,6 +1,7 @@
-@import url("button-ripple.css");
-@import url("checkbox.css");
-@import url("dropdown.css");
-@import url("input-text.css");
-@import url("select.css");
 @import "tailwindcss";
+
+@layer base {
+    :root {
+        --ripple: var(--color-gray-200)
+    }
+}

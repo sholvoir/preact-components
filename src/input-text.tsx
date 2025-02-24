@@ -32,8 +32,8 @@ export default (props: ITextInputProps & JSX.InputHTMLAttributes<HTMLInputElemen
         binding.value = (e.target as HTMLDivElement).textContent ?? '';
         onChange && onChange();
     }
-    return <div class={`input_4Xa52 ${className ?? ''}`} >
-        <input {...rest} value={binding.value?.toString()} onInput={handleInput} onBlur={handleBlur} onKeyUp={handleKeyPress}/>
-        {suggestions.value.length ? <div>{suggestions.value.map((s: string) => <div onClick={suggestionClicked}>{s}</div>)}</div> : ''}
+    return <div class={`inline-block relative border rounded ${className ?? ''}`} >
+        <input class="w-full outline-none px-2" {...rest} value={binding.value?.toString()} onInput={handleInput} onBlur={handleBlur} onKeyUp={handleKeyPress}/>
+        {suggestions.value.length ? <div class="absolute border border-solid z-100 top-[105%] inset-x-0">{suggestions.value.map((s, i) => <div key={i} onClick={suggestionClicked}>{s}</div>)}</div> : ''}
     </div>;
 }

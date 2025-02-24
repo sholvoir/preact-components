@@ -5,22 +5,26 @@ import ButtonBase from './button-base.tsx';
 export default (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>): VNode<HTMLButtonElement> => {
     const { class: className, children, onClick, ...rest} = props;
     const showRipple = useSignal(false);
-    const rippleStyle = useSignal('');
+    const rippleStyle = useSignal({});
     const handleClick = (e: JSX.TargetedMouseEvent<HTMLButtonElement>) => {
         const btn = e.currentTarget;
         const diameter = Math.max(btn.clientWidth, btn.clientHeight);
         const radius = diameter / 2;
-        rippleStyle.value = `width: ${diameter}px; height: ${diameter}px; left: ${
-            e.offsetX - radius}px; top: ${e.offsetY - radius}px`;
+        rippleStyle.value = {
+            width: `${diameter}px`,
+            height: `${diameter}px`,
+            left: `${e.offsetX - radius}px`,
+            top: `${e.offsetY - radius}px`,
+        }
         showRipple.value = true;
         setTimeout(() => showRipple.value = false, 610);
         if (onClick) onClick(e);
     }
     return <ButtonBase
         {...rest}
-        class={`ripple_5fybI ${className ?? ''}`}
+        class={`overflow-hidden relative rounded-md ${className ?? ''}`}
         onClick={handleClick}>
             {children}
-            {showRipple.value && <span style={rippleStyle.value}/>}
+            {showRipple.value && <span class="absolute transform-[scale(0)] rounded-[50%] bg-(--ripple,gray)/80 animate-[ripple_600ms_linear_0s]" style={rippleStyle.value}/>}
     </ButtonBase>;
 }

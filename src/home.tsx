@@ -20,7 +20,7 @@ export default (): VNode<HTMLDivElement> => {
     const code = useSignal(1);
     const options = [
         { value: '1', label: "a" },
-        { value: '2', label: "b" },
+        { value: '2', label: "p" },
         { value: '3', label: "c" },
         { value: '4', label: "d" },
         { value: '5', label: "e" },
@@ -30,17 +30,17 @@ export default (): VNode<HTMLDivElement> => {
     ];
     const suggestions = ['abc', 'abd', 'gwetf', 'fsdfa'];
     const xx = () => console.log("OnChange, n: ", n.value);
-    return <div>
-        <BButton>ButtonAntiShake</BButton><br />
-        <BButton disabled>ButtonAntiShake</BButton><br />
-        <RButton>ButtonAnchor</RButton><br />
-        <RButton disabled>ButtonAnchor</RButton><br />
-        <Checkbox binding={checkbox1} label="Enabled Checkbox" /><br />
-        <Checkbox binding={checkbox2} disabled label="Disabled Checkbox" /><br />
-        <InputText binding={n} options={suggestions} onChange={xx} /><br />
-        <InputTextArea binding={txt} /><br />
+    return <div class="p-2 flex flex-col gap-2">
+        <BButton>ButtonAntiShake</BButton>
+        <BButton disabled>DisabledButtonAntiShake</BButton>
+        <RButton>ButtonRipple</RButton>
+        <RButton disabled>DisabledButtonRipple</RButton>
+        <Checkbox binding={checkbox1} label="Enabled Checkbox" />
+        <Checkbox binding={checkbox2} disabled label="Disabled Checkbox" />
+        <InputText class="[&>div]:bg-slate-200" binding={n} options={suggestions} onChange={xx} />
+        <InputTextArea binding={txt} />
         <SSelect binding={sslec} options={options} title="Single Select" />
         <MSelect binding={mslec} options={options} title="Multi Select" />
-        <DropDown binding={code} options={countryCodes} title="Unied States"/>
+        <DropDown class="border rounded" binding={code} options={countryCodes} title="Unied States"/>
     </div>;
 }

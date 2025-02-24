@@ -1,12 +1,7 @@
 import { JSX, VNode } from "preact";
 import { Signal } from "@preact/signals";
 
-interface ITextAreaInputProps {
-    binding: Signal<string|undefined>
-}
-export default (props: ITextAreaInputProps & JSX.TextareaHTMLAttributes<HTMLTextAreaElement>): VNode<HTMLTextAreaElement> => {
-    const { binding, ...rest } = props;
-    const handleInput = (e: JSX.TargetedInputEvent<HTMLTextAreaElement>) =>
-        binding.value = (e.target as HTMLTextAreaElement).value;
-    return <textarea {...rest} value={binding.value} onInput={handleInput}/>;
-}
+export default ({ binding, class: className, ...rest }: {
+    binding: Signal<string | undefined>
+} & JSX.TextareaHTMLAttributes<HTMLTextAreaElement>): VNode<HTMLTextAreaElement> =>
+    <textarea class={`px-2 outline-none border rounded ${className??''}`} {...rest} value={binding.value} onInput={e => binding.value = e.currentTarget.value} />;

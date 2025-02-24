@@ -16,7 +16,8 @@ export default (props: ICheckboxProps & JSX.HTMLAttributes<HTMLDivElement>): VNo
             if (onChange) onChange(e);
         }
     }
-    return <div class={`check-box_6oN7Y ${className ?? ''}`} aria-disabled={disabled} onClick={handleClick} {...rest}>
-        <span>{binding.value?<IconCheck/>:''}</span>{label}
+    return <div class={`check-box_6oN7Y ${disabled?'opacity-50':''} ${className ?? ''}`} aria-disabled={disabled} onClick={handleClick} {...rest}>
+        <span class="inline-block w-4 h-4 border rounded mr-1 ">{binding.value&&<IconCheck class="w-full h-full align-top"/>}</span>
+        {label}
     </div>
 }

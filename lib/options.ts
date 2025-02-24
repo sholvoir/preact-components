@@ -12,3 +12,9 @@ export interface ISingleSlectProps {
     binding: Signal<string|number>;
     disabled?: boolean;
 }
+
+export interface IMultiSlectProps {
+    options: Options;
+    binding: Signal<Array<string|number>>;
+    disabled?: boolean;
+}

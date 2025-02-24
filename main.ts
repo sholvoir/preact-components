@@ -13,6 +13,9 @@ const outdir = './dest';
 const tail = new Deno.Command('tailwindcss', {
     args: ['-i', './styles.css', '-o', `${outdir}/styles.css`], stdout: 'inherit', stderr: 'inherit'
 });
+const uno = new Deno.Command(Deno.execPath(), {
+    args: ['-A', 'npm:@unocss/cli', 'src/**/*', '-o', 'dest/styles.css'], stdout: 'inherit', stderr: 'inherit'
+})
 const serve = new Deno.Command(Deno.execPath(), {
     args: ['-A', 'jsr:@std/http/file-server', `${outdir}/`], stdout: 'inherit', stderr: 'inherit'
 });
@@ -38,6 +41,10 @@ if (import.meta.main) {
     switch (Deno.args[0]) {
         case 'static': {
             await copy('static', outdir, { overwrite: true });
+            break;
+        }
+        case 'uno': {
+            await uno.output();
             break;
         }
         case 'build': {

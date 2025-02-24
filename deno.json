@@ -13,27 +13,28 @@
       "@std/fs": "jsr:@std/fs@^1.0.13",
       "esbuild": "npm:esbuild@^0.25.0",
       "esbuild-deno-loader": "jsr:@luca/esbuild-deno-loader@^0.11.1",
+      "unocss": "npm:unocss@^66.0.0",
       "preact": "npm:preact@^10.25.4"
    },
    "compilerOptions": {
       "jsx": "react-jsx",
       "jsxImportSource": "preact"
    },
-   "publish": {
-      "include": [
-         "src/**/*.tsx",
-         "lib/**/*.ts"
-      ]
-   },
    "exports": {
       "./button-base": "./src/button-base.tsx",
       "./button-ripple": "./src/button-ripple.tsx",
       "./checkbox": "./src/checkbox.tsx",
+      "./dropdown": "./src/dropdown.tsx",
       "./icon-check": "./src/icon-check.tsx",
+      "./icon-chevron-down": "./src/icon-chevron-down.tsx",
+      "./icon-chevron-left": "./src/icon-chevron-left.tsx",
+      "./icon-refresh": "./src/icon-refresh.tsx",
       "./input-text": "./src/input-text.tsx",
       "./input-textarea": "./src/input-textarea.tsx",
+      "./list": "./src/list.tsx",
       "./select-multi": "./src/select-multi.tsx",
       "./select-single": "./src/select-single.tsx",
+      "./tab": "./src/tab.tsx",
       "./options": "./lib/options.ts"
    }
 }
