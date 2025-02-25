@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import { JSX, VNode } from "preact";
-import { ISingleSlectProps } from "../lib/options.ts";
+import { ISingleSlectProps } from "./options.ts";
 
 export default (props: ISingleSlectProps & JSX.FieldsetHTMLAttributes<HTMLFieldSetElement>): VNode<HTMLFieldSetElement> => {
     const {options, binding, title, disabled, class: className, ...rest} = props;

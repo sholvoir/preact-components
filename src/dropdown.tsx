@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-explicit-any
 import { JSX, VNode } from "preact";
 import { useSignal } from "@preact/signals";
-import { ISingleSlectProps } from "../lib/options.ts";
+import { ISingleSlectProps } from "./options.ts";
 import ButtonBase from './button-base.tsx';
 
 export default (props: ISingleSlectProps & JSX.HTMLAttributes<HTMLDivElement>): VNode<HTMLDivElement> => {

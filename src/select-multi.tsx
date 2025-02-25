@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import { JSX, VNode } from "preact";
-import { IMultiSlectProps } from "../lib/options.ts";
+import { IMultiSlectProps } from "./options.ts";
 
 export default (props: IMultiSlectProps & JSX.FieldsetHTMLAttributes<HTMLFieldSetElement>): VNode<HTMLFieldSetElement> => {
     const {options, binding, title, disabled, class: className, ...rest} = props;

@@ -1,6 +1,7 @@
-import { JSX, VNode } from "preact";
-import { useSignal } from "@preact/signals";
-import ButtonBase from './button-base.tsx';
+import { JSX, VNode } from "preact"
+import { useSignal } from "@preact/signals"
+import ButtonBase from './button-base.tsx'
+import './animation-ripple.css'
 
 export default (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>): VNode<HTMLButtonElement> => {
     const { class: className, children, onClick, ...rest} = props;
@@ -22,9 +23,9 @@ export default (props: JSX.ButtonHTMLAttributes<HTMLButtonElement>): VNode<HTMLB
     }
     return <ButtonBase
         {...rest}
-        class={`overflow-hidden relative rounded-md ${className ?? ''}`}
+        class={`overflow-hidden relative ${className ?? ''}`}
         onClick={handleClick}>
             {children}
-            {showRipple.value && <span class="absolute transform-[scale(0)] rounded-[50%] bg-[var(--ripple,gray)]:80 animate-[ripple_600ms_linear_0s]" style={rippleStyle.value}/>}
+            {showRipple.value && <span class="absolute transform-[scale(0)] rounded-[50%] bg-[var(--bg-ripple,gray)]:80 animate-[ripple_600ms_linear_0s]" style={rippleStyle.value}/>}
     </ButtonBase>;
 }

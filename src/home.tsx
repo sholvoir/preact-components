@@ -1,6 +1,6 @@
 import { VNode } from "preact";
 import { useSignal } from "@preact/signals";
-import { countryCodes } from "../lib/country-code.ts";
+import { countryCodes } from "./country-code.ts";
 import BButton from './button-base.tsx';
 import RButton from './button-ripple.tsx';
 import Checkbox from './checkbox.tsx';

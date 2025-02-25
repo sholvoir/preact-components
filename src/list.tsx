@@ -1,6 +1,6 @@
 import { JSX, VNode } from "preact";
 import { Signal } from "@preact/signals";
-import { Options } from "../lib/options.ts";
+import { Options } from "./options.ts";
 
 export default ({options, cindex, ...rest}: {
     options: Options
