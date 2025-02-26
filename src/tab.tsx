@@ -1,15 +1,17 @@
 import { JSX, VNode } from "preact"
 import { Signal } from "@preact/signals"
+import './home.css';
 
-export default ({class: className, titles, cindex, children, ...rest}: {
-    titles?: Array<string>;
+export default ({class: className, cindex, children, ...rest}: {
     cindex: Signal<number>;
-} & JSX.HTMLAttributes<HTMLElement>): VNode<HTMLElement> => 
-<article class={`flex flex-col ${className??''}`} {...rest}>
-    <header class="flex">{titles?.map((title, i) =>
-        <div key={i} class={`text-center rounded-t-md ${cindex.value==i?"active":""}`}
-            onClick={()=>cindex.value=i}>{title}
-        </div>
-    )}</header>
-    <section class={`grow ${(titles?.length ?? 0) > 1 ? 'p-2': ''}`}>{children}</section>
-</article>;
+} & JSX.HTMLAttributes<HTMLElement>): VNode<HTMLElement> => {
+    const childs: Array<VNode<HTMLElement>> = Array.isArray(children) ? children : [children];
+    return <article class={`tab_iho3g flex flex-col ${className??''}`} {...rest}>
+        <header class="flex gap-2">{childs?.map((child, i) =>
+            <div key={i} class={`text-center rounded-t-md px-2 ${cindex.value==i?"active":""}`}
+                onClick={()=>cindex.value=i}>{child.props.title??i}
+            </div>
+        )}</header>
+        <section class="grow p-2">{childs[cindex.value]}</section>
+    </article>;
+}

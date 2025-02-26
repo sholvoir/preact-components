@@ -9,8 +9,10 @@ import InputTextArea from './input-textarea.tsx';
 import SSelect from './select-single.tsx';
 import MSelect from './select-multi.tsx';
 import DropDown from './dropdown.tsx';
+import Tab from './tab.tsx'
 
 export default (): VNode<HTMLDivElement> => {
+    const cindex = useSignal(0);
     const checkbox1 = useSignal(false);
     const checkbox2 = useSignal(true);
     const n = useSignal('');
@@ -39,8 +41,10 @@ export default (): VNode<HTMLDivElement> => {
         <Checkbox binding={checkbox2} disabled label="Disabled Checkbox" />
         <InputText class="[&>div]:bg-slate-200" binding={n} options={suggestions} onChange={xx} />
         <InputTextArea binding={txt} />
-        <SSelect binding={sslec} options={options} title="Single Select" />
-        <MSelect binding={mslec} options={options} title="Multi Select" />
         <DropDown class="border rounded" binding={code} options={countryCodes} title="Unied States"/>
+        <Tab cindex={cindex}>
+            <SSelect binding={sslec} options={options} title="Single Select" />
+            <MSelect binding={mslec} options={options} title="Multi Select" />
+        </Tab>
     </div>;
 }
