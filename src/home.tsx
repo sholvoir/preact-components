@@ -10,6 +10,7 @@ import SSelect from './select-single.tsx';
 import MSelect from './select-multi.tsx';
 import DropDown from './dropdown.tsx';
 import Tab from './tab.tsx'
+import './home.css';
 
 export default (): VNode<HTMLDivElement> => {
     const cindex = useSignal(0);
