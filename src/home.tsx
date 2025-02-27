@@ -10,7 +10,6 @@ import SSelect from './select-single.tsx';
 import MSelect from './select-multi.tsx';
 import DropDown from './dropdown.tsx';
 import Tab from './tab.tsx'
-import './index.css';
 
 export default (): VNode<HTMLDivElement> => {
     const cindex = useSignal(0);
@@ -43,9 +42,12 @@ export default (): VNode<HTMLDivElement> => {
         <InputText binding={n} options={suggestions} onChange={xx} />
         <InputTextArea binding={txt} />
         <DropDown class="border rounded" binding={code} options={countryCodes} title="Unied States"/>
-        <Tab cindex={cindex}>
-            <SSelect binding={sslec} options={options} title="Single Select" />
-            <MSelect binding={mslec} options={options} title="Multi Select" />
-        </Tab>
+        <div><Tab cindex={cindex} class="bg-[var(--bg-tab)]">
+            <div title="Single Select"><SSelect binding={sslec} options={options}/></div>
+            <fieldset class="border px-2">
+                <legend>Multi Select</legend>
+                <MSelect binding={mslec} options={options}/>
+            </fieldset>
+        </Tab></div>
     </div>;
 }
