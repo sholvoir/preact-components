@@ -1,40 +1,35 @@
 import { JSX, VNode } from "preact";
 import { Signal, useSignal } from "@preact/signals";
 
-interface ITextInputProps {
-    binding: Signal<string|number|undefined>;
-    num?: boolean;
+export default ({ binding, options, maxSuggest, class: className, onChange, ...rest}: {
+    binding: Signal<string|undefined>;
+    options: Array<string>;
     maxSuggest?: number;
-    options?: Array<string>;
     onChange?: () => void;
-}
-export default (props: ITextInputProps & JSX.InputHTMLAttributes<HTMLInputElement>): VNode<HTMLDivElement> => {
-    const { binding, num, options, maxSuggest, class: className, onChange, ...rest} = props;
+} & JSX.InputHTMLAttributes<HTMLInputElement>): VNode<HTMLDivElement> => {
     const max = maxSuggest ?? 12;
     const suggestions = useSignal<Array<string>>([]);
     const handleBlur = () => setTimeout(() => suggestions.value = [], 200);
     const handleKeyPress = (e: KeyboardEvent) => e.key == 'Enter' && handleBlur() && onChange && onChange();
-    const handleInput = (e: InputEvent) => {
-        const text = (e.target as HTMLInputElement).value;
-        binding.value = num ? +text : text;
-        if (options) if (text) {
-            const first: Array<string> = [];
-            const second: Array<string> = [];
-            for (const option of options) {
-                if (option.startsWith(text)) first.push(option);
-                else if (option.includes(text)) second.push(option);
-                if (first.length >= max) break;
-            }
-            suggestions.value = first.concat(second.slice(0, max - first.length));
-        } else suggestions.value = [];
+    const handleInput = (e: JSX.TargetedInputEvent<HTMLInputElement>) => {
+        const text = binding.value = e.currentTarget.value;
+        if (!text) return suggestions.value = [];
+        const first: Array<string> = [];
+        const second: Array<string> = [];
+        for (const option of options) {
+            if (option.startsWith(text)) first.push(option);
+            else if (option.includes(text)) second.push(option);
+            if (first.length >= max) break;
+        }
+        suggestions.value = first.concat(second.slice(0, max - first.length));
     };
-    const suggestionClicked = (e: Event) => {
-        binding.value = (e.target as HTMLDivElement).textContent ?? '';
+    const suggestionClicked = (e: JSX.TargetedMouseEvent<HTMLDivElement>) => {
+        binding.value = e.currentTarget.textContent ?? '';
         onChange && onChange();
     }
-    return <div class={`inline-block relative border rounded ${className ?? ''}`} >
-        <input class="w-full outline-none px-2" {...rest} value={binding.value?.toString()} onInput={handleInput} onBlur={handleBlur} onKeyUp={handleKeyPress}/>
-        {suggestions.value.length ? <div class="absolute border border-solid z-100 top-[105%] inset-x-0">
+    return <div class={`inline-block relative ${className ?? ''}`} >
+        <input class="w-full px-2" {...rest} value={binding.value?.toString()} onInput={handleInput} onBlur={handleBlur} onKeyUp={handleKeyPress}/>
+        {suggestions.value.length ? <div class="absolute border bg-[var(--bg-body)] z-100 top-[calc(100%_+_4px)] inset-x-0 px-2">
             {suggestions.value.map((s: string, i: number) => <div key={i} onClick={suggestionClicked}>{s}</div>)}
         </div> : ''}
     </div>;

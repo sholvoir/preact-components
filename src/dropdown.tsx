@@ -17,13 +17,13 @@ export default (props: ISingleSlectProps & JSX.HTMLAttributes<HTMLDivElement>): 
     const handleClick = () => {
         isOpen.value = !isOpen.value;
     };
-    return <div class={`relative ${className??''}`} {...rest}>
+    return <div class={`relative px-2 ${className??''}`} {...rest}>
         <ButtonBase class="flex gap-2 justify-between w-full" onClick={handleClick}>
             <span>{content}</span>
             <span class="i-mdi-chevron-down"/>
         </ButtonBase>
-        {isOpen.value && <div class="max-h-64 absolute top-[105%] inset-x-0 overflow-y-auto">
-            {options.map((option, i) => <div key={i} title={option.value as any} onClick={handleOptionClick}>{option.label}</div>)}
+        {isOpen.value && <div class="absolute top-[calc(100%_+_4px)] max-h-64 z-100 bg-[var(--bg-body)] inset-x-0 border overflow-y-auto">
+            {options.map((option, i) => <div key={i} class={`px-2 ${option.value==binding.value?'bg-[var(--bg-tab)]':''}`} title={option.value as any} onClick={handleOptionClick}>{option.label}</div>)}
         </div>}
     </div>;
 }

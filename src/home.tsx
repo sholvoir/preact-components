@@ -10,7 +10,7 @@ import SSelect from './select-single.tsx';
 import MSelect from './select-multi.tsx';
 import DropDown from './dropdown.tsx';
 import Tab from './tab.tsx'
-import './home.css';
+import './index.css';
 
 export default (): VNode<HTMLDivElement> => {
     const cindex = useSignal(0);
@@ -20,7 +20,7 @@ export default (): VNode<HTMLDivElement> => {
     const txt = useSignal('Tfhsak');
     const sslec = useSignal('1');
     const mslec = useSignal(['3', '5']);
-    const code = useSignal(1);
+    const code = useSignal('1');
     const options = [
         { value: '1', label: "a" },
         { value: '2', label: "p" },
@@ -40,7 +40,7 @@ export default (): VNode<HTMLDivElement> => {
         <RButton disabled>DisabledButtonRipple</RButton>
         <Checkbox binding={checkbox1} label="Enabled Checkbox" />
         <Checkbox binding={checkbox2} disabled label="Disabled Checkbox" />
-        <InputText class="[&>div]:bg-slate-200" binding={n} options={suggestions} onChange={xx} />
+        <InputText binding={n} options={suggestions} onChange={xx} />
         <InputTextArea binding={txt} />
         <DropDown class="border rounded" binding={code} options={countryCodes} title="Unied States"/>
         <Tab cindex={cindex}>

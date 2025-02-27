@@ -1,4 +1,4 @@
-import { defineConfig, presetWind3, presetIcons } from 'unocss';
+import { defineConfig, presetWind3, presetIcons, transformerDirectives } from 'unocss';
 
 const rawCSS = `
 :root, :host {
@@ -7,13 +7,16 @@ const rawCSS = `
 `
 export default defineConfig({
     preflights: [{ getCSS: () => rawCSS }],
-    presets: [presetIcons({
-        cdn: 'https://esm.sh/',
-        extraProperties: {
-            'display': 'inline-block',
-            'vertical-align': 'bottom',
-            'font-size': '130%'
-        }
-    }),
-    presetWind3({ dark: 'media' })]
+    transformers: [transformerDirectives()],
+    presets: [
+        presetIcons({
+            cdn: 'https://esm.sh/',
+            extraProperties: {
+                'display': 'inline-block',
+                'vertical-align': 'bottom',
+                'font-size': '130%'
+            }
+        }),
+        presetWind3({ dark: 'media' })
+    ]
 })
