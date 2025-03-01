@@ -10,7 +10,10 @@ export default ({ binding, options, maxSuggest, class: className, onChange, ...r
     const max = maxSuggest ?? 12;
     const suggestions = useSignal<Array<string>>([]);
     const handleBlur = () => setTimeout(() => suggestions.value = [], 200);
-    const handleKeyPress = (e: KeyboardEvent) => e.key == 'Enter' && handleBlur() && onChange && onChange();
+    const handleKeyPress = (e: JSX.TargetedKeyboardEvent<HTMLInputElement>) => {
+        e.stopPropagation()
+        e.key == 'Enter' && handleBlur() && onChange && onChange();
+    }
     const handleInput = (e: JSX.TargetedInputEvent<HTMLInputElement>) => {
         const text = binding.value = e.currentTarget.value;
         if (!text) return suggestions.value = [];

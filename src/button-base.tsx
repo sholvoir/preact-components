@@ -5,6 +5,7 @@ export default ({ class: className, children, disabled, onClick, ...rest}: JSX.B
 VNode<HTMLButtonElement> => {
     const enabled = useSignal(true);
     const handleClick = async (e: JSX.TargetedMouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
         enabled.value = false;
         if (onClick) await onClick(e);
         enabled.value = true;

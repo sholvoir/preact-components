@@ -17,9 +17,9 @@ export default (): VNode<HTMLDivElement> => {
     const checkbox2 = useSignal(true);
     const n = useSignal('');
     const txt = useSignal('Tfhsak');
-    const sslec = useSignal('1');
-    const mslec = useSignal(['3', '5']);
-    const code = useSignal('1');
+    const sslec = useSignal(1);
+    const mslec = useSignal([3, 5]);
+    const code = useSignal(1);
     const options = [
         { value: '1', label: "a" },
         { value: '2', label: "p" },
@@ -41,12 +41,12 @@ export default (): VNode<HTMLDivElement> => {
         <Checkbox binding={checkbox2} disabled label="Disabled Checkbox" />
         <InputText binding={n} options={suggestions} onChange={xx} />
         <InputTextArea binding={txt} />
-        <DropDown class="border rounded" binding={code} options={countryCodes} title="Unied States"/>
+        <DropDown class="border rounded" cindex={code} options={countryCodes.map(o=>o.label)} title="Unied States"/>
         <div><Tab cindex={cindex} class="bg-[var(--bg-tab)]">
-            <div title="Single Select"><SSelect binding={sslec} options={options}/></div>
+            <div title="Single Select"><SSelect cindex={sslec} options={options.map(o=>o.label)}/></div>
             <fieldset class="border px-2">
                 <legend>Multi Select</legend>
-                <MSelect binding={mslec} options={options}/>
+                <MSelect indices={mslec} options={options.map(o=>o.label)}/>
             </fieldset>
         </Tab></div>
     </div>;

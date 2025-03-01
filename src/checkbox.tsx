@@ -9,7 +9,8 @@ interface ICheckboxProps {
 }
 export default (props: ICheckboxProps & JSX.HTMLAttributes<HTMLDivElement>): VNode<HTMLDivElement> => {
     const { label, binding, disabled, class: className, onChange, ...rest} = props;
-    const handleClick = (e: any) => {
+    const handleClick = (e: JSX.TargetedMouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
         if (!disabled) {
             binding.value = !binding.value;
             if (onChange) onChange(e);

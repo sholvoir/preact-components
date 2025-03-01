@@ -1,6 +1,6 @@
 {
   "name": "@sholvoir/components",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@preact/signals": "^2.0.1",
+    "@sholvoir/generic": "npm:@jsr/sholvoir__generic",
     "preact": "^10.26.2"
   },
   "devDependencies": {
@@ -30,8 +31,6 @@
     "./select-multi": "./src/select-multi.tsx",
     "./select-single": "./src/select-single.tsx",
     "./tab": "./src/tab.tsx",
-    "./country-code": "./src/country-code.ts",
-    "./options": "./src/options.ts",
     "./tailwind.css": "./src/tailwind.css"
   }
 }
