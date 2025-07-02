@@ -1,15 +1,15 @@
 import { VNode } from "preact";
 import { useSignal } from "@preact/signals";
-import { countryCodes } from "./country-code.ts";
-import BButton from './button-base.tsx';
-import RButton from './button-ripple.tsx';
-import Checkbox from './checkbox.tsx';
-import InputText from './input-text.tsx';
-import InputTextArea from './input-textarea.tsx';
-import SSelect from './select-single.tsx';
-import MSelect from './select-multi.tsx';
-import DropDown from './dropdown.tsx';
-import Tab from './tab.tsx'
+import { countryCodes } from "../components/country-code.ts";
+import BButton from '../components/button-base.tsx';
+import RButton from '../components/button-ripple.tsx';
+import Checkbox from '../components/checkbox.tsx';
+import InputText from '../components/input-text.tsx';
+import InputTextArea from '../components/input-textarea.tsx';
+import SSelect from '../components/select-single.tsx';
+import MSelect from '../components/select-multi.tsx';
+import DropDown from '../components/dropdown.tsx';
+import Tab from '../components/tab.tsx'
 
 export default (): VNode<HTMLDivElement> => {
     const cindex = useSignal(0);
@@ -32,7 +32,7 @@ export default (): VNode<HTMLDivElement> => {
     ];
     const suggestions = ['abc', 'abd', 'gwetf', 'fsdfa'];
     const xx = () => console.log("OnChange, n: ", n.value);
-    return <div class="p-2 flex flex-col gap-2">
+    return <div class="p-2 flex flex-col gap-2 h-dvh">
         <BButton>ButtonAntiShake</BButton>
         <BButton disabled>DisabledButtonAntiShake</BButton>
         <RButton>ButtonRipple</RButton>
@@ -42,7 +42,7 @@ export default (): VNode<HTMLDivElement> => {
         <InputText binding={n} options={suggestions} onChange={xx} />
         <InputTextArea binding={txt} />
         <DropDown class="border rounded" cindex={code} options={countryCodes.map(o=>o.label)} title="Unied States"/>
-        <div><Tab cindex={cindex} class="bg-[var(--bg-tab)]">
+        <div class="grow flex flex-col"><Tab cindex={cindex} class="grow bg-[var(--bg-tab)]">
             <div title="Single Select"><SSelect cindex={sslec} options={options.map(o=>o.label)}/></div>
             <fieldset class="border px-2">
                 <legend>Multi Select</legend>
